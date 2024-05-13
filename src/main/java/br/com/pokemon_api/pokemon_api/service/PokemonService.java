@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.pokemon_api.pokemon_api.model.Pokemon;
 
-public interface PokemonSerivice {
+public interface PokemonService {
 
   List<Pokemon> listarPokemon();
 

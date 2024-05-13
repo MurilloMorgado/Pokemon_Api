@@ -9,7 +9,7 @@ import br.com.pokemon_api.pokemon_api.exception.InternalServerException;
 import br.com.pokemon_api.pokemon_api.exception.NotFoundException;
 import br.com.pokemon_api.pokemon_api.model.Regiao;
 import br.com.pokemon_api.pokemon_api.repository.RegiaoRepository;
-import lombok.NoArgsConstructor;
+import br.com.pokemon_api.pokemon_api.service.RegiaoService;
 import lombok.RequiredArgsConstructor;
 
 @Service

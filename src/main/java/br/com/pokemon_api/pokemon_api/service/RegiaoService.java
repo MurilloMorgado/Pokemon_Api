@@ -1,4 +1,4 @@
-package br.com.pokemon_api.pokemon_api.service.iml;
+package br.com.pokemon_api.pokemon_api.service;
 
 import java.util.List;
 

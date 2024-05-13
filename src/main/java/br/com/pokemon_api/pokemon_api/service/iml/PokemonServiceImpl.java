@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.pokemon_api.pokemon_api.model.Pokemon;
-import br.com.pokemon_api.pokemon_api.service.PokemonSerivice;
+import br.com.pokemon_api.pokemon_api.service.PokemonService;
 import lombok.NoArgsConstructor;
 
 @Service
 @NoArgsConstructor
-public class PokemonServiceImpl implements PokemonSerivice{
+public class PokemonServiceImpl implements PokemonService{
 
   @Override
   public List<Pokemon> listarPokemon() {

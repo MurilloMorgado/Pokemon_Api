@@ -4,31 +4,37 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.com.pokemon_api.pokemon_api.exception.InternalServerException;
+import br.com.pokemon_api.pokemon_api.exception.NotFoundException;
 import br.com.pokemon_api.pokemon_api.model.Natureza;
+import br.com.pokemon_api.pokemon_api.repository.NaturezaRepository;
 import br.com.pokemon_api.pokemon_api.service.NaturezaService;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@NoArgsConstructor
+@RequiredArgsConstructor
 
 public class NaturezaServiceImpl implements NaturezaService {
 
+  private final NaturezaRepository naturezaRepository;
+
   @Override
   public List<Natureza> listarNatureza() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'listarNatureza'");
+    return naturezaRepository.findAll();
   }
 
   @Override
   public Natureza buscarNatureza(long idNatureza) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'buscarNatureza'");
+    return naturezaRepository.findById(idNatureza).orElseThrow(() -> new NotFoundException("Falha ao buscar natureza"));
   }
 
   @Override
   public Natureza criarNatureza(Natureza natureza) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'criarNatureza'");
+    try {
+      return naturezaRepository.save(natureza);
+    } catch (Exception e) {
+      throw new InternalServerException("Falha ao criar nova região");
+    }
   }
 
   @Override
