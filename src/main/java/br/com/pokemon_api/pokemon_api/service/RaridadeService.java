@@ -8,7 +8,7 @@ public interface RaridadeService {
 
   List<Raridade> listarRaridade();
 
-  Raridade buscRaridade(long idRaridade);
+  Raridade buscarRaridade(long idRaridade);
 
   Raridade criarRaridade(Raridade raridade);
 

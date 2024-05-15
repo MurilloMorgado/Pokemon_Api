@@ -2,44 +2,62 @@ package br.com.pokemon_api.pokemon_api.service.iml;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import br.com.pokemon_api.pokemon_api.exception.InternalServerException;
+import br.com.pokemon_api.pokemon_api.exception.NotFoundException;
 import br.com.pokemon_api.pokemon_api.model.Pokemon;
+import br.com.pokemon_api.pokemon_api.repository.PokemonRepository;
 import br.com.pokemon_api.pokemon_api.service.PokemonService;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@NoArgsConstructor
-public class PokemonServiceImpl implements PokemonService{
+@RequiredArgsConstructor
+public class PokemonServiceImpl implements PokemonService {
+
+  private final PokemonRepository pokemonRepository;
 
   @Override
   public List<Pokemon> listarPokemon() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'listarPokemon'");
+    return pokemonRepository.findAll();
   }
 
   @Override
   public Pokemon buscarPokemon(long idPokemon) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'buscarPokemon'");
+    return pokemonRepository.findById(idPokemon).orElseThrow(() -> new NotFoundException("Falaha ao buscar pokemon"));
   }
 
   @Override
   public Pokemon criarPokemon(Pokemon pokemon) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'criarPokemon'");
+    try {
+      return pokemonRepository.save(pokemon);
+    } catch (Exception e) {
+      throw new InternalServerException("Falha ao criar pokemon");
+    }
   }
 
   @Override
   public void atualizarPokemon(long idPokemon, Pokemon pokemon) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'atualizarPokemon'");
+    try {
+      Pokemon pokemonDB = buscarPokemon(idPokemon);
+
+      BeanUtils.copyProperties(pokemon, pokemonDB);
+      pokemonRepository.save(pokemonDB);
+
+    } catch (Exception e) {
+      throw new InternalServerException("Falha ao atualizar pokemon");
+    }
+
   }
 
   @Override
   public void deletarPokemon(long idPokemon) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'deletarPokemon'");
+    try {
+      pokemonRepository.deleteById(idPokemon);
+    } catch (Exception e) {
+      throw new InternalServerException("Falha ao deletar pokemon");
+    }
   }
 
 }

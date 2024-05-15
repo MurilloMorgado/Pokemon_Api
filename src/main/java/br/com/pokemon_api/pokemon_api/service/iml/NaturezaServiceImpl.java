@@ -2,6 +2,8 @@ package br.com.pokemon_api.pokemon_api.service.iml;
 
 import java.util.List;
 
+import org.hibernate.boot.model.naming.ImplicitJoinColumnNameSource.Nature;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import br.com.pokemon_api.pokemon_api.exception.InternalServerException;
@@ -39,14 +41,25 @@ public class NaturezaServiceImpl implements NaturezaService {
 
   @Override
   public void atualizarNatureza(Natureza natureza, long idNatureza) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'atualizarNatureza'");
+
+    try {
+      Natureza naturezaDB = buscarNatureza(idNatureza);
+
+      BeanUtils.copyProperties(natureza, naturezaDB);
+      naturezaRepository.save(naturezaDB);
+
+    } catch (Exception e) {
+      throw new InternalServerException("Falha ao atualizar natureza");
+    }
   }
 
   @Override
   public void deletarNatureza(long idNatureza) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'deletarNatureza'");
+    try {
+      naturezaRepository.deleteById(idNatureza);
+    } catch (Exception e) {
+      throw new InternalServerException("Falha ao deletar natureza");
+    }
   }
 
 }

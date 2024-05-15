@@ -20,25 +20,32 @@ public class RegiaoServiceImpl implements RegiaoService {
 
   @Override
   public List<Regiao> listarRegiao() {
+
     return regiaoRepository.findAll();
+    
   }
 
   @Override
   public Regiao buscarRegiao(long idRegiao) {
+
     return regiaoRepository.findById(idRegiao).orElseThrow(() -> new NotFoundException("Falha ao procurar região"));
+
   }
 
   @Override
   public Regiao criarRegiao(Regiao regiao) {
+
     try {
-    return regiaoRepository.save(regiao);      
+      return regiaoRepository.save(regiao);
     } catch (Exception e) {
       throw new InternalServerException("Falha ao criar nova região");
     }
+
   }
 
   @Override
   public void atualizarRegiao(Regiao regiao, long idRegiao) {
+
     try {
       Regiao regiarDB = buscarRegiao(idRegiao);
 
@@ -48,10 +55,12 @@ public class RegiaoServiceImpl implements RegiaoService {
     } catch (Exception e) {
       throw new InternalServerException("Falha ao atualziar região");
     }
+
   }
 
   @Override
   public void deletarRegiao(long idRegiao) {
+
     try {
       regiaoRepository.deleteById(idRegiao);
     } catch (Exception e) {
