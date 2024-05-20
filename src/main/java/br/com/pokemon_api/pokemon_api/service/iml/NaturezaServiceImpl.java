@@ -2,7 +2,6 @@ package br.com.pokemon_api.pokemon_api.service.iml;
 
 import java.util.List;
 
-import org.hibernate.boot.model.naming.ImplicitJoinColumnNameSource.Nature;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 

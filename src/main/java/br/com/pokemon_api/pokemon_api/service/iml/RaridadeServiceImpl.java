@@ -10,7 +10,6 @@ import br.com.pokemon_api.pokemon_api.exception.NotFoundException;
 import br.com.pokemon_api.pokemon_api.model.Raridade;
 import br.com.pokemon_api.pokemon_api.repository.RaridadeRepository;
 import br.com.pokemon_api.pokemon_api.service.RaridadeService;
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
