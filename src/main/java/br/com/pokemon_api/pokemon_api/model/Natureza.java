@@ -1,10 +1,13 @@
 package br.com.pokemon_api.pokemon_api.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +28,15 @@ public class Natureza {
 
   @Column(name = "NATUREZA")
   private String natureza;
+
+  @ManyToMany(mappedBy = "naturezas")
+  private List<Pokemon> pokemons;
+
+  public Natureza(Long idNatureza, String natureza) {
+    this.idNatureza = idNatureza;
+    this.natureza = natureza;
+  }
+
+  
 
 }
