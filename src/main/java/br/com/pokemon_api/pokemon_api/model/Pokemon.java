@@ -36,7 +36,7 @@ public class Pokemon {
   @Column(name = "FLAG_EVOLUCAO")
   private boolean flagEvolucao;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "ID_REGIAO")
   private Regiao regiao;
 

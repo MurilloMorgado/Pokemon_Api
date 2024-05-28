@@ -48,7 +48,7 @@ public class TesteConfig implements CommandLineRunner {
     raridadeRepository.saveAll(Arrays.asList(raridadeComum));
     regiaoRepository.saveAll(Arrays.asList(regiaoKanto));
 
-    Pokemon pokemonPicachu = new Pokemon("Picachu", true, regiaoKanto, raridadeComum);
+    Pokemon pokemonPicachu = new Pokemon("Pikachu", true, regiaoKanto, raridadeComum);
     Pokemon pokemonCharmander = new Pokemon( "Charmander", true, regiaoKanto, raridadeComum);
     Pokemon pokemonBulbasaur = new Pokemon( "Bulbasaur", true, regiaoKanto, raridadeComum);
 
