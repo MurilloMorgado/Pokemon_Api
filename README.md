@@ -3,7 +3,6 @@
 
 # Sobre o projeto
 
-https://wmazoni-sds1.netlify.app
 
 Pokemon_api é uma API inspirada no universo Pokémon, desenvolvida para fornecer informações detalhadas sobre diversos aspectos desse mundo fantástico. A aplicação foi construída para oferecer dados estruturados e acessíveis sobre Pokémon, habilidades, tipos, e muito mais.
 
